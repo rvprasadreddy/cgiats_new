@@ -1,0 +1,29 @@
+/*CGI ATS Global Styles*/
+.advancedBtn {
+	margin-right: 15px;
+}
+.actionIcons, .send-email {
+	margin-right: 10px;
+}
+.SearchGridTable {
+	margin-top: 9px; 
+}
+.dataTables_wrapper {
+	margin-top:10px;
+}
+.educationBox {
+	height: 108px !important;
+}
+.WorkAuthorizationBox {
+	height: 123px !important;
+}
+.StatesBox {
+	height: 123px !important;
+}
+.showRecords {
+	margin-top: 20px;
+}
+.showRecordsRow {
+	border-top: 1px solid #eee;
+	margin-top: 10px;
+}

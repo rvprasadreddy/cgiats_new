@@ -1,0 +1,132 @@
+<div ng-controller="consultantreportcontroller" ng-init="onload()">
+
+<!-- BEGIN PAGE HEADER--> 
+<div class="sub-page-header">
+  <div class="page-bar" style="margin-bottom:0px;">
+    <ul class="page-breadcrumb">
+         	<li><a href="#/dashboard" ng-if="!(rsLoginUser.userRole === 'IN_DM' || rsLoginUser.userRole === 'IN_Recruiter' || rsLoginUser.userRole === 'ATS_Executive')">Home</a> 
+				<a href="#/india_joborders/my_indiajobOrder" ng-if="(rsLoginUser.userRole === 'IN_DM' || rsLoginUser.userRole === 'IN_Recruiter')">Home</a>
+				<a href="#/candidates/missingData" ng-if="(rsLoginUser.userRole === 'ATS_Executive')">Home</a>
+				<i class="fa fa-circle"></i>
+				</li>
+      <li>
+        <span>Reports</span> 
+        <i class="fa fa-circle"></i>
+      </li>
+      <li>
+        <span>Consultant Report</span> 
+      </li> 
+    </ul> 
+    
+    <div class="page-toolbar">
+						<button class="btn btn-primary blue" style="margin-right:-10px;" ng-click="showfilters()">Filters &nbsp;<i class="fa fa-filter" aria-hidden="true"></i></button>
+			</div>
+    
+  </div>
+</div>
+<!-- END PAGE HEADER-->
+
+
+
+<!-- BEGIN MAIN CONTENT -->
+
+	<div class="row col-md-12 filters animated slideInRight delay-three"
+		id="filterfields">
+
+
+		<div class="col-md-3">
+			<div class="form-group">
+				<label class="">Start Date</label>
+				<div class="input-group datepick">
+					<input type="text" class="form-control whitereadonly"
+						uib-datepicker-popup="{{DateFormat}}"
+						is-open="startDatePopup.opened"
+						datepicker-options="startDateOptions" close-text="Close"
+						alt-input-formats="altInputFormats"
+						ng-model="consultantreport.startDate" ng-keyup="" readonly="true" />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="startDateopen()">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="form-group">
+				<label class="">End Date</label>
+				<div class="input-group">
+					<input type="text" class="form-control whitereadonly"
+						uib-datepicker-popup="{{DateFormat}}"
+						is-open="endDatePopup.opened" datepicker-options="endDateOptions"
+						close-text="Close" alt-input-formats="altInputFormats"
+						ng-model="consultantreport.endDate" ng-keyup="" readonly="true" />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="endDateopen()">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="col-md-3">
+			<div class="form-group">
+				<label>DM Name</label>
+				<div class="multiselect" events="dmevent" ng-dropdown-multiselect=""
+					options="dmdata" selected-model="dm"
+					extra-settings="manysearchsettings"></div>
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<button type="button" ng-click="getdataforreport()"
+				class="btn btn-primary blue" style="margin-top: 25px;">
+				<i class="fa fa-search"></i> View
+			</button>
+		</div>
+
+		<div class="col-md-2">
+			<button title="Export" type="button" class="btn blue"  style="margin-top: 25px;"
+									ng-click="exportData()">
+									Export <i class="fa fa-upload" aria-hidden="true"></i>
+								</button>
+								
+			</button>
+		</div>
+	</div>
+	<br>
+
+<!-- END MAIN CONTENT -->
+
+
+		<div class="row fade-in-up table-scrollable">
+            
+	            <table class="customtable" id="consultantInfoReportTable" data-filter-control="true" bs-table-control="consultantInfoReport.consultantTableControl" ng-show="consultantInfoReportTable"  >
+		        <thead>
+		            <tr>
+		                <th data-field="Consultant Name" data-sortable="true" data-filter-control="input"></th>
+		                <th data-field="Account Name" data-sortable="true" data-filter-control="input"></th>
+		                <th data-field="jobCategory" data-sortable="true" data-filter-control="input"></th>
+		                <th data-field="startDate" data-sortable="true"  data-sort-name="strStartDate"></th>
+		                <th data-field="endDate" data-sortable="true" data-sort-name="strEndDate"></th>
+		                <th data-field="Status" data-filter-control="input" data-sortable="true"></th>
+		                <th data-field="Recruiter Name" data-sortable="true" data-filter-control="input"></th>
+		                <th data-field="DM Name" data-sortable="true" data-filter-control="input"></th>
+		                
+		            </tr>
+		        </thead>
+		        <tbody>
+		           
+		        </tbody>
+	    		</table> 
+	    		</div>
+
+
+
+</div>
